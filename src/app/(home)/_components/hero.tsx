@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button"
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs"
+import { ChevronRight } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Hero() {
   return (
@@ -11,14 +14,31 @@ export default function Hero() {
       <h1 className="text-5xl font-bold">
         Beyond Reading: Talk to Your PDFs for Deeper Insights
       </h1>
-      <p className="text-muted-foreground text-xl">
+      <p className="text-muted-foreground text-2xl">
         Upload any PDF, ask questions, and get precise answers powered by AI.
         Transform how you intereat with information.
       </p>
-      <Button variant="default" size="lg">
-        <Image src="/icons/google.svg" width={16} height={16} alt="arrow" />
-        <span className="font-semibold">Login with Google</span>
-      </Button>
+      <SignedOut>
+        <SignInButton
+          signUpFallbackRedirectUrl={"/dashboard"}
+          signUpForceRedirectUrl={"/dashboard"}
+          oauthFlow="popup"
+          mode="modal"
+        >
+          <Button variant="default" size="lg" className="cursor-pointer">
+            <Image src="/icons/google.svg" width={16} height={16} alt="arrow" />
+            <span className="font-semibold">Login with Google</span>
+          </Button>
+        </SignInButton>
+      </SignedOut>
+
+      <SignedIn>
+        <Link href="/dashboard">
+          <Button variant="default" size="lg" className="cursor-pointer">
+            Go to Dashboard <ChevronRight size={16} />
+          </Button>
+        </Link>
+      </SignedIn>
     </div>
   )
 }
