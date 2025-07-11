@@ -5,11 +5,11 @@ import {
 } from "@clerk/nextjs/server"
 import { NextRequest } from "next/server"
 
-const isPublicRoute = createRouteMatcher(["/"])
+const isProtected = createRouteMatcher(["/dashboard"])
 
 export default clerkMiddleware(
   async (auth: ClerkMiddlewareAuth, req: NextRequest) => {
-    if (!isPublicRoute(req)) {
+    if (isProtected(req)) {
       await auth.protect()
     }
   }

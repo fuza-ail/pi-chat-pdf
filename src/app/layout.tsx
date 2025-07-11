@@ -1,3 +1,5 @@
+import Header from "@/components/header"
+import QueryProvider from "@/components/query-provider"
 import { ClerkProvider } from "@clerk/nextjs"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
@@ -25,13 +27,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          {children}
-        </body>
-      </html>
+      <QueryProvider>
+        <html lang="en">
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <Header />
+            <main className="mt-[4rem]">{children}</main>
+          </body>
+        </html>
+      </QueryProvider>
     </ClerkProvider>
   )
 }

@@ -1,4 +1,6 @@
-# Stack
+# ChatPdf
+
+## Stack
 
 - Next.js
 - Shadcn
@@ -9,10 +11,14 @@
 - Langchain
 - Gemini Api
 - Prisma
+- Inngest
 
-# Development
+## Development
 
-1. Landing Page init
-2. Setup Prisma
-3. Setup Supabase
-4. Setup Clerk
+- Landing Page init
+- Setup Supabase
+- Setup Prisma
+- Setup Clerk
+- Setup Webhooks
+- Dashboard page
+- File upload using react dropzone
