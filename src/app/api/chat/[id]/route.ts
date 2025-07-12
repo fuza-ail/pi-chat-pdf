@@ -1,3 +1,4 @@
+import { deleteNamespace } from "@/lib/pinecone"
 import prisma from "@/lib/prisma"
 import { supabase } from "@/lib/supabase"
 import { NextRequest } from "next/server"
@@ -41,7 +42,8 @@ export async function DELETE(
         id,
       },
     })
-    supabase.from("chats").delete().eq("id", id)
+    await supabase.from("chats").delete().eq("id", id)
+    await deleteNamespace(document.fileName)
     if (!document) {
       return new Response("Document not found", { status: 404 })
     }

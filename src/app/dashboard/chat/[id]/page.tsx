@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ResizableHandle, ResizablePanel } from "@/components/ui/resizable"
 import { Chat as ChatModel } from "@prisma/client"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { Circle, GripVertical, Trash } from "lucide-react"
+import { GripVertical, Loader, Trash } from "lucide-react"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
 
@@ -14,7 +14,7 @@ export default function Chat() {
   const router = useRouter()
   const mutation = useMutation({
     mutationFn: async () => {
-      const res = await fetch(`/api/chats/${id}`, {
+      const res = await fetch(`/api/chat/${id}`, {
         method: "DELETE",
       })
       if (!res.ok) {
@@ -25,7 +25,7 @@ export default function Chat() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["chats"] })
       router.push("/dashboard")
-      toast.success("File uploaded successfully")
+      toast.success("File deleted successfully")
     },
     onError: (error) => {
       console.error("Upload failed:", error)
@@ -34,7 +34,7 @@ export default function Chat() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["chats", id],
     queryFn: async (): Promise<ChatModel> => {
-      const res = await fetch(`/api/chats/${id}`)
+      const res = await fetch(`/api/chat/${id}`)
       return res.json()
     },
   })
@@ -58,7 +58,7 @@ export default function Chat() {
                 disabled={mutation.isPending}
               >
                 {mutation.isPending ? (
-                  <Circle className="animate-spin" />
+                  <Loader className="animate-spin" />
                 ) : (
                   <Trash />
                 )}
@@ -82,7 +82,7 @@ export default function Chat() {
       </div>
 
       <ResizablePanel defaultSize={30} minSize={20}>
-        <ChatContainer />
+        <ChatContainer fileName={data?.fileName as string} />
       </ResizablePanel>
     </>
   )

@@ -1,6 +1,6 @@
 "use client"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { Inbox } from "lucide-react"
+import { Inbox, Loader } from "lucide-react"
 import { useDropzone } from "react-dropzone"
 import { toast } from "sonner"
 
@@ -48,9 +48,13 @@ export default function FileUpload() {
         isDragActive ? "bg-neutral-100/60" : ""
       }`}
     >
-      <input {...getInputProps()} />
+      <input {...getInputProps()} disabled={mutation.isPending} />
       <>
-        <Inbox className="w-10 h-10 text-purple-400" />
+        {mutation.isPending ? (
+          <Loader className="w-10 h-10 animate-spin text-purple-400" />
+        ) : (
+          <Inbox className="w-10 h-10 text-purple-400" />
+        )}
         <p className="text-sm text-muted-foreground">
           {mutation.isPending ? "Uploading..." : "Drop PDF Here"}
         </p>

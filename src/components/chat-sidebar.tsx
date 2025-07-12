@@ -13,7 +13,7 @@ export default function ChatSidebar() {
   const { data, isLoading } = useQuery({
     queryKey: ["chats"],
     queryFn: async (): Promise<Chat[]> => {
-      const res = await fetch("/api/chats")
+      const res = await fetch("/api/chat")
       return res.json()
     },
   })

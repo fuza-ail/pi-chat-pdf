@@ -1,5 +1,6 @@
 // pages/api/upload-supabase.ts or app/api/upload-supabase/route.ts (for App Router)
 
+import { loadToPinecone } from "@/lib/pinecone"
 import prisma from "@/lib/prisma" // Assuming this path is correct for your Prisma client
 import { supabase } from "@/lib/supabase" // Assuming this path is correct for your Supabase client
 import { auth } from "@clerk/nextjs/server" // Import Clerk authentication utilities
@@ -68,11 +69,13 @@ export async function POST(request: NextRequest) {
       .from(bucketName)
       .getPublicUrl(fileName)
 
+    await loadToPinecone(fileName)
+
     const publicUrl = publicUrlData?.publicUrl
 
     const user = await prisma.user.findUnique({
       where: {
-        clerkId: userId, // Assuming your Prisma User model has a 'clerkId' field
+        clerkId: userId,
       },
     })
 
@@ -110,8 +113,3 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-
-// You might also want to add a GET method for testing or other purposes
-// export async function GET(request: NextRequest) {
-//   return NextResponse.json({ message: "This is the file upload API route." });
-// }
