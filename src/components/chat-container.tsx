@@ -10,7 +10,7 @@ export default function ChatContainer() {
       </div>
       <div className="p-4 flex-1 overflow-auto">
         <div className="flex flex-col gap-2">
-          <p>Conv</p>
+          <p>Ask me Anything</p>
         </div>
       </div>
       <div className="p-4 flex items-center gap-2 border-t-[1px] border-neutral-300/60">

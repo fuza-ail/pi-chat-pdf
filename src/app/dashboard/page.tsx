@@ -1,23 +1,23 @@
 import FileUpload from "@/components/file-upload"
-import { Separator } from "@/components/ui/separator"
-import ListDocument from "./_components/list-document"
+import { ResizablePanel } from "@/components/ui/resizable"
 
 export default function Dashboard() {
   return (
-    <div className="flex items-center w-full">
-      <div className="container flex flex-col items-center w-full gap-4 text-center">
-        <h1 className="mt-20 text-2xl md:text-4xl font-semibold">
-          Upload Your PDF&apos;s
-        </h1>
-        <p className="text-muted-foreground">
-          Upload any PDF, ask questions, and get precise answers
+    <ResizablePanel
+      defaultSize={85}
+      minSize={60}
+      className="h-full grid place-items-center"
+    >
+      <div className="flex flex-col gap-8 text-center max-w-[60rem] items-center">
+        <h1 className="text-4xl font-semibold">Chat with any PDF</h1>
+        <p className="text-xl text-muted-foreground">
+          Turn tedious PDFs into dynamic conversations. Ask questions, get
+          instant summaries, and pinpoint information in seconds.
         </p>
-        <div className="border-2 p-2 rounded-xl w-full md:w-100">
+        <div className="p-4 border-2 border-neutral-300/60 rounded-xl shadow-lg shadow-neutral-100/60 w-1/2 aspect-video">
           <FileUpload />
         </div>
-        <Separator className="my-8" />
-        <ListDocument />
       </div>
-    </div>
+    </ResizablePanel>
   )
 }

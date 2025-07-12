@@ -20,7 +20,7 @@ export async function GET() {
         clerkId: clerkUserId,
       },
       include: {
-        documents: {
+        chats: {
           orderBy: {
             uploadedAt: "desc", // Order by most recently uploaded
           },
@@ -35,9 +35,9 @@ export async function GET() {
       )
     }
 
-    const documents = userWithDocuments.documents
+    const chats = userWithDocuments.chats
 
-    return NextResponse.json(documents, { status: 200 })
+    return NextResponse.json(chats, { status: 200 })
   } catch (error) {
     console.error("Error fetching documents:", error)
     return NextResponse.json(

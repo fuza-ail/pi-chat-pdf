@@ -45,7 +45,15 @@ export default function Hero() {
         </Link>
       </SignedIn>
 
-      <div className="mt-12">Showcase</div>
+      <div className="mt-12 p-2 rounded-xl bg-neutral-200/80">
+        <Image
+          src="/images/showcase.png"
+          alt="showcase"
+          width={1000}
+          height={500}
+          className="rounded-lg"
+        />
+      </div>
     </div>
   )
 }

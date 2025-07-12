@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save document metadata to Prisma
-    await prisma.document.create({
+    await prisma.chat.create({
       data: {
         fileName: fileName,
         fileSize: fileSize,
