@@ -13,7 +13,7 @@ export const llm = new ChatGoogleGenerativeAI({
   temperature: 0.5,
 })
 
-export async function getEmbeddings(text: string) {
+export async function getEmbeddings(text: string): Promise<number[]> {
   try {
     const response = await embeddings.embedQuery(text)
     return response

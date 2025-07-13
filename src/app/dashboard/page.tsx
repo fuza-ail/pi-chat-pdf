@@ -8,7 +8,7 @@ export default function Dashboard() {
       minSize={60}
       className="h-full grid place-items-center"
     >
-      <div className="flex flex-col gap-8 text-center max-w-[60rem] items-center">
+      <div className="flex flex-col gap-8 text-center max-w-[60rem] items-center container">
         <h1 className="text-4xl font-semibold">Chat with any PDF</h1>
         <p className="text-xl text-muted-foreground">
           Turn tedious PDFs into dynamic conversations. Ask questions, get

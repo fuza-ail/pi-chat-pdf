@@ -11,18 +11,15 @@ export async function GET(
     const { id } = await params
     if (!id) return new Response("Missing id", { status: 400 })
 
-    const document = await prisma.chat.findUnique({
+    const chat = await prisma.chat.findUnique({
       where: {
         id,
       },
-      include: {
-        messages: true,
-      },
     })
-    if (!document) {
+    if (!chat) {
       return new Response("Document not found", { status: 404 })
     }
-    return new Response(JSON.stringify(document), { status: 200 })
+    return new Response(JSON.stringify(chat), { status: 200 })
   } catch (error) {
     console.error("Error fetching document:", error)
     return new Response("Error fetching document", { status: 500 })

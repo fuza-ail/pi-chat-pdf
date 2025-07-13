@@ -82,7 +82,10 @@ export default function Chat() {
       </div>
 
       <ResizablePanel defaultSize={30} minSize={20}>
-        <ChatContainer fileName={data?.fileName as string} />
+        <ChatContainer
+          fileName={data?.fileName as string}
+          chatId={id as string}
+        />
       </ResizablePanel>
     </>
   )

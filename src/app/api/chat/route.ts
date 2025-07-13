@@ -15,7 +15,7 @@ export async function GET() {
       )
     }
 
-    const userWithDocuments = await prisma.user.findUnique({
+    const userChat = await prisma.user.findUnique({
       where: {
         clerkId: clerkUserId,
       },
@@ -28,14 +28,14 @@ export async function GET() {
       },
     })
 
-    if (!userWithDocuments) {
+    if (!userChat) {
       return NextResponse.json(
         { message: "User not found in database." },
         { status: 404 }
       )
     }
 
-    const chats = userWithDocuments.chats
+    const chats = userChat.chats
 
     return NextResponse.json(chats, { status: 200 })
   } catch (error) {

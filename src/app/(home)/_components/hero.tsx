@@ -45,7 +45,7 @@ export default function Hero() {
         </Link>
       </SignedIn>
 
-      <div className="mt-12 p-2 rounded-xl bg-neutral-200/80">
+      <div className="mt-12 mb-6 p-2 rounded-xl bg-neutral-200/80">
         <Image
           src="/images/showcase.png"
           alt="showcase"
