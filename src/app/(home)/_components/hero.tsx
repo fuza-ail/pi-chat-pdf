@@ -21,7 +21,7 @@ export default function Hero() {
       </h1>
       <p className="text-md text-muted-foreground md:text-2xl">
         Upload any PDF, ask questions, and get precise answers powered by AI.
-        Transform how you intereat with information.
+        Transform how you interact with information.
       </p>
       <SignedOut>
         <SignInButton

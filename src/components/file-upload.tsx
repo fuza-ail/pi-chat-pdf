@@ -48,7 +48,11 @@ export default function FileUpload() {
         isDragActive ? "bg-neutral-100/60" : ""
       }`}
     >
-      <input {...getInputProps()} disabled={mutation.isPending} />
+      <input
+        {...getInputProps()}
+        disabled={mutation.isPending}
+        accept="application/pdf"
+      />
       <>
         {mutation.isPending ? (
           <Loader className="w-10 h-10 animate-spin text-purple-400" />
