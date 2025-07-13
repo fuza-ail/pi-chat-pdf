@@ -73,7 +73,6 @@ export default function ChatContainer({
             chatId: chatId,
             createdAt: new Date(), // Add a temporary date
             userId: "", // Placeholder, will be updated by actual response
-            retrievedContext: "", // Add retrievedContext as it's part of Message type
           }
           return old ? [...old, optimisticMessage] : [optimisticMessage]
         }
