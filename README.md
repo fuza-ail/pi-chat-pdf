@@ -4,7 +4,6 @@
 
 - Next.js
 - Shadcn
-- Clerk
 - Stripe
 - Supabase
 - PinecondeDB
